@@ -1,0 +1,17 @@
+.radiusSliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #0000001A;
+  padding: 10px;
+  border-radius: 5px;
+
+  font-family: monospace;
+
+  p {
+    display: inline-block;
+    width: 50px;
+    text-align: right;
+    vertical-align: middle;
+  }
+}
