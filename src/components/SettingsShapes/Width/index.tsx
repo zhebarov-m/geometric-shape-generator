@@ -1,8 +1,9 @@
-
-
 import { Slider, styled } from "@mui/material";
 import { FC } from "react";
 import styles from "./index.module.scss";
+import { RootState, useAppDispatch } from "../../../redux/store";
+import { useSelector } from "react-redux";
+import { setWidth } from "../../../redux/slices/squareSlice";
 
 const PrettoSlider = styled(Slider)({
   color: "#AACCEE",
@@ -45,14 +46,27 @@ const PrettoSlider = styled(Slider)({
 });
 
 const WidthSlider: FC = () => {
+  const dispatch = useAppDispatch();
+  const { width } = useSelector((state: RootState) => state.square);
+  console.log(width);
+
+  const handleWidthChange = (event: Event, newValue: number | number[]) => {
+    console.log(newValue);
+
+    dispatch(setWidth(newValue as number));
+  };
+
   return (
     <div className={styles.widthSliderContainer}>
       <p>width:</p>
       <PrettoSlider
+        value={width}
         valueLabelDisplay="auto"
         aria-label="pretto slider"
         defaultValue={0}
-        max={800}
+        min={10}
+        max={300}
+        onChange={handleWidthChange}
       />
     </div>
   );

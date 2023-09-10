@@ -9,17 +9,11 @@ import LowerLeftCorner from "../components/SettingsShapes/Ragius/LowerLeftCorner
 import UpperRightCorner from "../components/SettingsShapes/Ragius/UpperRightCorner/UpperRightCorner";
 import LowerRightCorner from "../components/SettingsShapes/Ragius/LowerRightCorner/LowerRightCorner";
 import MyCodeBlock from "../components/CodeBlock/CodeBlock";
+import SquareShape from "../test";
 
 const SquarePage: FC = () => {
-  const code = `
-  .square {
-    width: 300px;
-    height: 300px;
-    background-color: white;
-    border-radius: 10px;
-    transform: rotate(45deg);
-}
-`;
+  
+
 
   return (
     <main style={{ display: "flex" }}>
@@ -69,8 +63,8 @@ const SquarePage: FC = () => {
         <Rotation />
       </div>
       <div>
+        <SquareShape />
         <MyCodeBlock
-          code={code}
           language="css"
           showLineNumbers={true}
           startingLineNumber={1}

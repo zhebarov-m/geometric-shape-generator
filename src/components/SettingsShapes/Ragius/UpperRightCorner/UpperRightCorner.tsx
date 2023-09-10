@@ -1,7 +1,10 @@
 import { FC } from "react";
 import Input from "../../../Input/Input";
+import { RootState } from "../../../../redux/store";
+import { useSelector } from "react-redux";
 
 const UpperRightCorner: FC = () => {
+  const angles = useSelector((state: RootState) => state.radius.angles);
   return (
     <div
       style={{
@@ -10,7 +13,7 @@ const UpperRightCorner: FC = () => {
         gap: 10,
       }}
     >
-      <Input radiusValue="0px 15px 0px 0px" />
+      <Input angles={angles} angleIndex={1} radiusValue="0px 15px 0px 0px" />
       <h4 style={{ width: 150 }}>Правый верхний угол</h4>
     </div>
   );
