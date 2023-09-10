@@ -3,12 +3,12 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 // Обновленный тип состояния
 interface iSquareState {
   angles: string[]; // Массив углов
-  radius: string;
+  radius: number;
 }
 
 const initialState: iSquareState = {
   angles: ["0", "0", "0", "0"], // Изначально четыре элемента в массиве
-  radius: "",
+  radius: 0,
 };
 
 const squareRadiusSlice = createSlice({
@@ -22,7 +22,7 @@ const squareRadiusSlice = createSlice({
         state.angles[angleIndex] = value;
       }
     },
-    setRadius: (state, action: PayloadAction<string>) => {
+    setRadius: (state, action: PayloadAction<number>) => {
       state.radius = action.payload;
     },
   },

@@ -1,6 +1,9 @@
 import { Slider, styled } from "@mui/material";
 import { FC } from "react";
 import styles from "./index.module.scss";
+import { RootState, useAppDispatch } from "../../../redux/store";
+import { useSelector } from "react-redux";
+import { setRadius } from "../../../redux/slices/squareRadiusSlice";
 
 const PrettoSlider = styled(Slider)({
   color: "#AACCEE",
@@ -43,14 +46,24 @@ const PrettoSlider = styled(Slider)({
 });
 
 const RadiusSlider: FC = () => {
+  const dispatch = useAppDispatch();
+  const { radius } = useSelector((state: RootState) => state.radius);
+console.log(radius);
+
+  const handleRadiusChange = (event: Event, newValue: number | number[]) => {
+    dispatch(setRadius(newValue as number))
+  }
+
   return (
     <div className={styles.radiusSliderContainer}>
       <p>radius:</p>
       <PrettoSlider
+        value={radius}
         valueLabelDisplay="auto"
         aria-label="pretto slider"
         defaultValue={0}
-        max={100}
+        max={1000}
+        onChange={handleRadiusChange}
       />
     </div>
   );

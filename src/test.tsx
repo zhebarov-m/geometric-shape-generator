@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 
 const SquareShape: React.FC = () => {
-  const { size, width, height } = useSelector(
+  const { size, width, height, color } = useSelector(
     (state: RootState) => state.square
   );
   const angles = useSelector((state: RootState) => state.radius.angles);
+  const {radius} = useSelector((state: RootState) => state.radius)
   const squareRef = useRef<HTMLDivElement | null>(null);
   const [currentWidth, setCurrentWidth] = useState<number>(width);
   const [currentHeight, setCurrentHeight] = useState<number>(height);
@@ -28,13 +29,13 @@ const SquareShape: React.FC = () => {
           transform: `scale(${size})`,
           width: `${width}px`,
           height: `${height}px`,
-          backgroundColor: "white",
+          backgroundColor: `${color}`,
           color: "#22558899",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: `${angles[0]}px ${angles[1]}px ${angles[2]}px ${angles[3]}px`,
+          borderRadius: radius ? `${radius}px` : `${angles[0]}px ${angles[1]}px ${angles[2]}px ${angles[3]}px`,
         }}
       >
         <p>{`${currentWidth.toFixed(0)}px`}</p>

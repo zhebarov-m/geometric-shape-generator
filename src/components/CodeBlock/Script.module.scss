@@ -1,0 +1,29 @@
+.codeStyle {
+  font-family: Consolas, "Courier New", monospace;
+  width: 800px;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: #24283b;
+  color: #a6accd;
+  padding: 16px;
+  border-radius: 5px;
+  border: 1px solid #2a2d44;
+
+  h3 {
+    color: #f8c072;
+    font-weight: 400;
+  }
+
+  p {
+    color: #74ceac;
+    margin-left: 30px;
+  }
+
+  span {
+    color: #f27983;
+  }
+
+  i {
+    color: #838383;
+  }
+}
