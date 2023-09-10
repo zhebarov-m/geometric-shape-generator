@@ -49,7 +49,7 @@ const SizeSlider: FC = () => {
   const dispatch = useAppDispatch()
   const {size} = useSelector((state: RootState) => state.square)
   
-  const handleSizeChange = (event: Event, newValue: number | number[]) => {
+  const handleSizeChange = (_event: Event, newValue: number | number[]) => {
     dispatch(setSize(newValue as number))
   }
 

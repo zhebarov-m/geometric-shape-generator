@@ -50,7 +50,7 @@ const RadiusSlider: FC = () => {
   const { radius } = useSelector((state: RootState) => state.radius);
 console.log(radius);
 
-  const handleRadiusChange = (event: Event, newValue: number | number[]) => {
+  const handleRadiusChange = (_event: Event, newValue: number | number[]) => {
     dispatch(setRadius(newValue as number))
   }
 

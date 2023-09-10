@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Navigation: FC = () => {
   const [value, setValue] = React.useState("recents");
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 

@@ -50,7 +50,7 @@ const WidthSlider: FC = () => {
   const { width } = useSelector((state: RootState) => state.square);
   console.log(width);
 
-  const handleWidthChange = (event: Event, newValue: number | number[]) => {
+  const handleWidthChange = (_event: Event, newValue: number | number[]) => {
     console.log(newValue);
 
     dispatch(setWidth(newValue as number));

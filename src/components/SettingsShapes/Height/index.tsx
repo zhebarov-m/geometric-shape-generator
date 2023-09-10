@@ -49,7 +49,7 @@ const SizeSlider: FC = () => {
   const dispatch = useAppDispatch();
   const { height } = useSelector((state: RootState) => state.square);
 
-  const handleHeightChange = (event: Event, newValue: number | number[]) => {
+  const handleHeightChange = (_event: Event, newValue: number | number[]) => {
     dispatch(setHeight(newValue as number));
   };
 
