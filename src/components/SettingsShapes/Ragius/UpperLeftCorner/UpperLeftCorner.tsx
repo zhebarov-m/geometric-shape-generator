@@ -14,7 +14,6 @@ const UpperLeftCorner: FC = () => {
         gap: 10,
       }}
     >
-      <h4 style={{ width: 150 }}>Левый верхний угол</h4>
       <Input angles={angles} angleIndex={0} radiusValue="15px 0px 0px 0px" />
     </div>
   );

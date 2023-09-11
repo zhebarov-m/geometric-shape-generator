@@ -7,7 +7,7 @@ const SquareShape: React.FC = () => {
     (state: RootState) => state.square
   );
   const angles = useSelector((state: RootState) => state.radius.angles);
-  const {radius} = useSelector((state: RootState) => state.radius)
+  const { radius } = useSelector((state: RootState) => state.radius);
   const squareRef = useRef<HTMLDivElement | null>(null);
   const [currentWidth, setCurrentWidth] = useState<number>(width);
   const [currentHeight, setCurrentHeight] = useState<number>(height);
@@ -22,7 +22,18 @@ const SquareShape: React.FC = () => {
   }, [width, height, size]);
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#fff",
+        width: 500,
+        height: 500,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        border: "1px solid #e1e1ef",
+        borderRadius: 10,
+      }}
+    >
       <div
         ref={squareRef}
         style={{
@@ -35,7 +46,11 @@ const SquareShape: React.FC = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: radius ? `${radius}px` : `${angles[0]}px ${angles[1]}px ${angles[2]}px ${angles[3]}px`,
+          borderRadius: radius
+            ? `${radius}%`
+            : `${angles[0]}px ${angles[1]}px ${angles[2]}px ${angles[3]}px`,
+            boxShadow: '0px 0px 0px 0px #fff'
+            
         }}
       >
         <p>{`${currentWidth.toFixed(0)}px`}</p>

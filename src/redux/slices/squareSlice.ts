@@ -11,7 +11,7 @@ const initialState: iSquareState = {
   size: 1,
   width: 150,
   height: 150,
-  color: "#ffffff",
+  color: "#474bff",
 };
 
 const squareSlice = createSlice({

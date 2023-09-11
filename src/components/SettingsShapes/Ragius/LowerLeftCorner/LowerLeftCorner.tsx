@@ -13,7 +13,6 @@ const LowerLeftCorner: FC = () => {
         gap: 10,
       }}
     >
-      <h4 style={{ width: 150 }}>Левый нижний угол</h4>
       <Input angles={angles} angleIndex={2} radiusValue="0px 0px 0px 15px" />
     </div>
   );

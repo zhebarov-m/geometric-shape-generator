@@ -6,17 +6,17 @@ import { useSelector } from "react-redux";
 import { setHeight } from "../../../redux/slices/squareSlice";
 
 const PrettoSlider = styled(Slider)({
-  color: "#AACCEE",
-  height: 7,
-  width: 500,
+  color: "#474bff",
+  height: 8,
+  width: 300,
   "& .MuiSlider-track": {
     border: "none",
   },
   "& .MuiSlider-thumb": {
-    height: 24,
-    width: 24,
-    backgroundColor: "#1976d2",
-    border: "2px solid #AACCEE",
+    height: 22,
+    width: 22,
+    backgroundColor: "#fff",
+    border: "2px solid #474bff20",
     "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
       boxShadow: "inherit",
     },
@@ -29,10 +29,10 @@ const PrettoSlider = styled(Slider)({
     fontSize: 12,
     background: "unset",
     padding: 0,
-    width: 32,
-    height: 32,
+    width: 28,
+    height: 28,
     borderRadius: "50% 50% 50% 0",
-    backgroundColor: "#1976d2",
+    backgroundColor: "#474bff",
     transformOrigin: "bottom left",
     transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
     "&:before": { display: "none" },
@@ -55,7 +55,7 @@ const SizeSlider: FC = () => {
 
   return (
     <div className={styles.heightSliderContainer}>
-      <p>height:</p>
+      <p>Высота:</p>
       <PrettoSlider
         value={height}
         valueLabelDisplay="auto"

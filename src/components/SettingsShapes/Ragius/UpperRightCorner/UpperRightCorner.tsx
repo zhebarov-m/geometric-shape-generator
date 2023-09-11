@@ -14,7 +14,6 @@ const UpperRightCorner: FC = () => {
       }}
     >
       <Input angles={angles} angleIndex={1} radiusValue="0px 15px 0px 0px" />
-      <h4 style={{ width: 150 }}>Правый верхний угол</h4>
     </div>
   );
 };

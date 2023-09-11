@@ -31,7 +31,7 @@ const MyCodeBlock: FC = () => {
         </p>
         {radius ? (
           <p>
-            border-radius: <span>{radius}px;</span>
+            border-radius: <span>{radius}%;</span>
           </p>
         ) : (
           <p>
