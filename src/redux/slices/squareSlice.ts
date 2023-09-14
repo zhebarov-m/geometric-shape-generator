@@ -5,6 +5,7 @@ interface iSquareState {
   width: number;
   height: number;
   color: string;
+  bgColor: string;
 }
 
 const initialState: iSquareState = {
@@ -12,6 +13,7 @@ const initialState: iSquareState = {
   width: 150,
   height: 150,
   color: "#474bff",
+  bgColor: "#ffffff",
 };
 
 const squareSlice = createSlice({
@@ -30,9 +32,12 @@ const squareSlice = createSlice({
     setColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
     },
+    setBgColor: (state, action: PayloadAction<string>) => {
+      state.bgColor = action.payload;
+    },
   },
 });
 
-export const { setSize, setWidth, setHeight, setColor } = squareSlice.actions;
+export const { setSize, setWidth, setHeight, setColor, setBgColor } = squareSlice.actions;
 
 export default squareSlice.reducer;

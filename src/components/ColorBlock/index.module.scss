@@ -1,0 +1,79 @@
+/* styles.module.scss */
+.myComponent {
+  position: relative;
+
+  .flexContainer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inputShapeColorContainer,
+  .inputBgColorContainer {
+    position: relative;
+    display: inline-block;
+
+    input {
+      margin: 8px;
+      width: 28ch;
+      background-color: #fff;
+      color: #636388;
+      border: 1px solid #e1e1ef;
+      border-radius: 4px;
+      padding: 16px;
+      transition: border-color 0.3s;
+
+      padding-left: 36px;
+
+      &:focus {
+        border: 1px solid #636388;
+      }
+    }
+
+    .colorIndicator,
+    .bgColorIndicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 12%;
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+  }
+
+  .label {
+    font-size: 14px;
+    margin-left: 12px;
+    color: #636388;
+  }
+
+  
+  .colorBlock,
+  .bgColorBlock {
+    background-color: white;
+    padding: 16px;
+    border: 1px solid #e1e1ef;
+    border-radius: 12px;
+    position: absolute;
+    z-index: 10;
+    top: 65px;
+    left: 8px;
+    cursor: pointer;
+    opacity: 0; /* Устанавливаем начальную прозрачность в 0 */
+    animation: fadeIn 0.5s forwards; /* Имя анимации, длительность и сохранение состояния после анимации */
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0; /* Начальное состояние - полностью прозрачный */
+    }
+    100% {
+      opacity: 1; /* Конечное состояние - полностью непрозрачный */
+    }
+    0% {
+      opacity: 0; /* Начальное состояние - полностью прозрачный */
+    }
+  }
+}

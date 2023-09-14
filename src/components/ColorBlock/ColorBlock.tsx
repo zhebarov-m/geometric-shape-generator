@@ -1,77 +1,98 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { useSelector } from "react-redux";
-import { setColor } from "../../redux/slices/squareSlice";
+import { setBgColor, setColor } from "../../redux/slices/squareSlice";
 import { RootState, useAppDispatch } from "../../redux/store";
 import { HexColorPicker } from "react-colorful";
-import { InputAdornment, TextField } from "@mui/material";
+import styles from "./index.module.scss";
 
 const ColorBlock: FC = () => {
   const [isColorBlockVisible, setColorBlockVisibility] = useState(false);
+  const [isBgColorBlockVisible, setBgColorBlockVisibility] = useState(false);
   const dispatch = useAppDispatch();
-  const { color } = useSelector((state: RootState) => state.square);
+  const { color, bgColor } = useSelector((state: RootState) => state.square);
+
+  // Общая функция для обработки изменения цвета
   const handleColorChange = (newColor: string) => {
     dispatch(setColor(newColor));
   };
 
-  const handleColorChangeInput = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    dispatch(setColor(e.target.value));
+  // Общая функция для обработки изменения цвета заднего фона
+  const handleBgColorChange = (newBgColor: string) => {
+    dispatch(setBgColor(newBgColor));
   };
 
+  // Общая функция для обработки изменения значения input цвета
+  const handleInputChange = (
+    newValue: string,
+    setColorFunction: (value: string) => void
+  ) => {
+    setColorFunction(newValue);
+  };
+
+  // Общая функция для переключения видимости блока выбора цвета
   const toggleColorBlock = () => {
-    setColorBlockVisibility(!isColorBlockVisible);
+    setColorBlockVisibility(true);
+  };
+
+  // Общая функция для переключения видимости блока выбора цвета заднего фона
+  const toggleBgColorBlock = () => {
+    setBgColorBlockVisibility(true);
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <h3>Выбор цвета фигуры:</h3>
-        <TextField
-          value={color}
-          onClick={toggleColorBlock}
-          onChange={handleColorChangeInput}
-          label="Выбор цвета фигуры"
-          id="outlined-end-adornment"
-          sx={{
-            m: 1,
-            width: '25ch',
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                borderColor: 'initial', // Установите начальный цвет границы (обычно это серый или другой цвет по умолчанию)
-              },
-              '&.Mui-focused fieldset': {
-                borderColor: '#474bff', // Установите цвет границы при фокусе
-              },
-            },
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <div
-                  style={{
-                    width: 20,
-                    height: 20,
-                    borderRadius: "18%",
-                    backgroundColor: color,
-                  }}
-                ></div>
-              </InputAdornment>
-            ),
-          }}
-          InputLabelProps={{
-            style: { fontSize: "14px", marginLeft: 3, color: '#474bff' }, // Установите желаемый размер шрифта
-          }}
-        />
-      </div>
-      {isColorBlockVisible && ( // Условный рендеринг
-        <div style={{ position: "absolute", top: 50, left: 192 }}>
-          <HexColorPicker
-            color={color}
-            onChange={(event) => handleColorChange(event)}
+    <div className={styles.myComponent}>
+      <div className={styles.flexContainer}>
+        <label htmlFor="colorInput" className={styles.label}>
+          Выбор цвета фигуры
+        </label>
+        <div className={styles.inputShapeColorContainer}>
+          <input
+            type="text"
+            value={color}
+            onClick={toggleColorBlock}
+            onChange={(e) =>
+              handleInputChange(e.target.value, handleColorChange)
+            }
+            placeholder="Выбор цвета фигуры"
+            id="colorInput"
           />
+
+          <div
+            style={{ backgroundColor: color }}
+            className={styles.colorIndicator}
+          ></div>
+          {isColorBlockVisible && (
+            <div className={styles.colorBlock}>
+              <HexColorPicker color={color} onChange={handleColorChange} />
+            </div>
+          )}
         </div>
-      )}
+        <label htmlFor="bgColorInput" className={styles.label}>
+          Выбор цвета заднего фона
+        </label>
+        <div className={styles.inputBgColorContainer}>
+          <input
+            type="text"
+            value={bgColor}
+            onClick={toggleBgColorBlock}
+            onChange={(e) =>
+              handleInputChange(e.target.value, handleBgColorChange)
+            }
+            placeholder="Выбор цвета заднего фона"
+            id="bgColorInput"
+          />
+
+          <div
+            style={{ backgroundColor: bgColor }}
+            className={styles.bgColorIndicator}
+          ></div>
+          {isBgColorBlockVisible && (
+            <div className={styles.bgColorBlock}>
+              <HexColorPicker color={bgColor} onChange={handleBgColorChange} />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

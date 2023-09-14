@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 
 const SquareShape: React.FC = () => {
-  const { size, width, height, color } = useSelector(
+  const { size, width, height, color, bgColor } = useSelector(
     (state: RootState) => state.square
   );
   const angles = useSelector((state: RootState) => state.radius.angles);
@@ -24,7 +24,7 @@ const SquareShape: React.FC = () => {
   return (
     <div
       style={{
-        backgroundColor: "#fff",
+        backgroundColor: bgColor,
         width: 500,
         height: 500,
         display: "flex",
